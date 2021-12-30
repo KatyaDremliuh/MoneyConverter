@@ -6,7 +6,7 @@ namespace MoneyConverterApp
     public partial class Form1 : Form
     {
         // курсы валют
-        private double usdRate = 2.5249;
+        private double usdRate = RateGetter.GetUsd();
         private double euroRate = 2.8545;
 
         public Form1()
@@ -23,9 +23,10 @@ namespace MoneyConverterApp
             double money = double.Parse(moneyStr);
 
             string convertion = string.Empty;
-            double euro = 0;
-
             double usd;
+            double euro;
+            double byn;
+
             if (rdBtnBYN.Checked)
             {
                 usd = money / this.usdRate;
@@ -34,7 +35,6 @@ namespace MoneyConverterApp
                 convertion = $"Ваши {moneyStr} BYN составляют: \r\n{usd} USD\r\nили\r\n{euro} Euro";
             }
 
-            double byn;
             if (rdBtnUSD.Checked)
             {
                 byn = money * this.usdRate;
